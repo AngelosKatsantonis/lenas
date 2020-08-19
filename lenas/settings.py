@@ -25,12 +25,18 @@ SECRET_KEY = 'e9gp(*q_j67qglu1z2p@w4%n!9geh+!6*)fk7-4unrqvow#sj5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'lenas.blog',
+
+    'ckeditor',
+    'ckeditor_uploader',
+    'easy_thumbnails',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -105,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Athens'
 
 USE_I18N = True
 
@@ -118,3 +124,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = 'media/'
+MEDIA_URL = 'http://localhost:8080/'
+
+CKEDITOR_UPLOAD_PATH = 'articles/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'entities_greek': True,
+        'toolbar': [
+            ['Bold','Italic', 'Underline', 'Strike', '-', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['ShowBlocks'],
+            ['Image']
+        ]
+    }
+        
+}
