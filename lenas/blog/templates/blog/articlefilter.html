@@ -1,0 +1,18 @@
+{% load contact_tags %}
+	<form  class="bg-secondary" action="{% url 'blog:articles' %}" method="GET" id="articlefilter" novalidate>
+		<div class="form-row  m-0 justify-content-center">
+		<div class="col-lg-3 mt-lg-2">
+		{% render_field form.year %}
+		</div>
+		<div class="col-lg-3 mt-lg-2">
+		{% render_field form.month %}
+		</div>
+		<div class="col-lg-3 mt-lg-2">
+		{% render_field form.tag %}
+		</div>
+		<div class="col-lg-3">
+		<button type="Submit" class="btn btn-md btn-dark">Filter</button>	
+		</div>
+		</div>
+		</div>
+	</form>

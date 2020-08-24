@@ -19,4 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('articles/', include('lenas.blog.urls')),
+    path('services/', include('lenas.promo.urls')),
+    path('', include('lenas.home.urls')),
 ]

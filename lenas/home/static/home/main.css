@@ -1,0 +1,16 @@
+.width-wrapper {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+
+	@media (min-width: 1651px) {
+		width: 100%;
+	}
+	@media (max-width: 1650px) {
+		width: 90%
+	}
+}	
+
+[class$="-area"] {
+	margin-top: 50px;
+}

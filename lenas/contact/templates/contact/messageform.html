@@ -1,0 +1,11 @@
+{% load static %}
+{% load contact_tags %}
+
+<h3>Got a question?</h3>
+<p class="mb-2 mt-2">Then send us a message and we will contact you as soon as possible!</p>
+<form action="{% url 'home:home' %}" method="POST" id="messageform" novalidate>
+	{% for f in form %}
+		{% render_field f %}
+	{% endfor %}
+<button class="mb-3" type="Submit">Send</button>
+</form>

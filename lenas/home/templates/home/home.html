@@ -1,0 +1,24 @@
+{% extends 'home/includes/base.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="width-wrapper">
+	<div class="promo-area">
+		<h3 class="text-center">Service Spotlight</h3>
+		{% include "promo/services.html" %}
+	</div>
+	<div class="blog-area">
+		<h3 class="text-center">Latest Articles</h3>
+		{% include "blog/articles.html" %}
+	</div>
+	<div class="info-contact-area">
+		<div class="row">
+			<div class="col-lg-6 geo-area">
+			{% include "home/includes/geolocation.html" %}
+			</div>
+			<div class="col-lg-6 text-center bg-secondary contact-area">
+			{% include "contact/messageform.html" %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "home/includes/base.html" %}
+{% block title %}Articles{% endblock %}
+{% block body %}
+	<div class="container-fluid width-wrapper p-0 text-center">
+		<h3>Articles</h3>
+			{% include "blog/articlefilter.html" %}
+			{% include "blog/articles.html" %}
+	</div>
+{% endblock %}

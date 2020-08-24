@@ -1,0 +1,13 @@
+{% load static %}
+{% load contact_tags %}
+
+<div class="appointmentform text-center">
+<h3>Interested in an appointment for {{ service.title }}?</h3>
+<p class="mt-2 mb-2">Then fill in the form below and we will contact you as soon as possible for verification</p>
+	<form action="{% url 'promo:service' service.id %}" method="POST" id="appointmentform" novalidate>
+		{% for f in form %}
+			{% render_field f %}
+		{% endfor %}
+		<button type="Submit">Send</button>
+	</form>
+</div>

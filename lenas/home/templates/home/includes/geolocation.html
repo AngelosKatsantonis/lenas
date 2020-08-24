@@ -1,0 +1,50 @@
+<div class="card text-center">
+	<div class="card-header bg-dark">
+	<ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active text-muted" data-toggle="tab" href="#loc0" id="loc0-tab" role="tab" aria-controls="loc0" aria-selected="true">{{ offices.0.area }}</a>
+		</li>
+		{% for office in offices|slice:"1:" %}
+		<li class="nav-item">
+			<a class="nav-link text-muted" data-toggle="tab" id="loc{{ forloop.counter }}-tab" href="#loc{{ forloop.counter }}" role="tab" aria-controls="loc{{ forloop.counter }}" aria-selected="false">{{ office.area }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	</div>
+	<div class="card-body">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" 
+				id="loc0" 
+				role="tabpanel" 
+				aria-labelledby="loc0-tab">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="map0">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						{{ offices.0.address }}
+						</br>
+						{{ offices.0.phone }}</div>
+					</div>
+				</div>
+			{% for office in offices|slice:"1:" %}
+			<div class="tab-pane fade" 
+				     id="loc{{ forloop.counter }}" 
+				     role="tabpanel" 
+				     aria-labelledby="loc{{ forloop.counter }}-tab"> 
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="map{{ forloop.counter }}">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						{{ office.address }}
+						</br>
+						{{ office.phone }}</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+</div>

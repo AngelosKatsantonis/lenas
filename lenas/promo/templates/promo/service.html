@@ -1,0 +1,19 @@
+{% extends "home/includes/base.html" %}
+{% block title %}{{ service.title }}{% endblock %}
+
+{% block body %}
+	<div class="container-fluid width-wrapper p-0">
+		<img class="rounded img-fluid mt-5 mb-3" src="{{ service.image.large.url }}">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="jumbotron">
+					<h1 class="display-4">{{ service.title }}</h1>
+					<p class="lead">{{ service.description|safe }}</p>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				{% include "contact/appointmentform.html" %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

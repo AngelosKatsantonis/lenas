@@ -32,10 +32,14 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'lenas.blog',
+    'lenas.promo',
+    'lenas.contact',
+    'lenas.home',
 
     'ckeditor',
     'ckeditor_uploader',
     'easy_thumbnails',
+    'taggit',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'lenas.promo.processors.get_services',
             ],
         },
     },
@@ -128,7 +133,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = 'media/'
 MEDIA_URL = 'http://localhost:8080/'
 
-CKEDITOR_UPLOAD_PATH = 'articles/'
+# CK EDITOR SETTINGS
+CKEDITOR_UPLOAD_PATH = 'ckeditor-docs/'
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -143,3 +149,35 @@ CKEDITOR_CONFIGS = {
     }
         
 }
+
+# easy_thumbnails settings
+
+THUMBNAIL_ALIASES = {
+    'promo.Service.image': {
+            'slide': {
+                'size': (1024,300),
+                'crop': 'smart',
+                'upscale': True,
+            },
+            'large': {
+                'size': (1200,400),
+                'crop': 'smart',
+                'upscale': True,
+                }
+        },        
+    'blog.Article.image': {
+            'small': {
+                'size': (400,200),
+                'crop': '50 50',
+                'upscale': True,
+            },
+            'large': {
+                'size': (1200,400),
+                'crop': 'smart',
+                'upscale': True,
+                }
+        }        
+}
+
+# Used for google maps
+GOOGLE_API_KEY = "test"
