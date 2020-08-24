@@ -130,8 +130,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = 'media/'
-MEDIA_URL = 'http://localhost:8080/'
+MEDIA_ROOT = '/media/'
+MEDIA_URL = '/media/'
 
 # CK EDITOR SETTINGS
 CKEDITOR_UPLOAD_PATH = 'ckeditor-docs/'
