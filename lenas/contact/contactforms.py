@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import Message,Appointment
+from lenas.promo.models import Service
 
 class ContactForm(forms.ModelForm):
         class Meta:

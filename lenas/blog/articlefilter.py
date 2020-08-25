@@ -2,40 +2,46 @@ from django import forms
 
 from .models import Article
 
-TAG_CHOICES = [(None,'----')]
-YEAR_CHOICES = [(None,'----')]
-
-MONTH_CHOICES = [
-    (None,'----'),
-    (1, 'January'),
-    (2, 'February'),
-    (3, 'March'),
-    (4, 'April'),
-    (5, 'May'),
-    (6, 'June'),
-    (7, 'July'),
-    (8, 'August'),
-    (9, 'September'),
-    (10, 'Octomber'),
-    (11, 'November'),
-    (12, 'December')
-]
 
 class ArticleFilter(forms.Form):
-    tags = []
-    articles = Article.objects.all()
-    for article in articles:
-        for tag in article.tags.all():
-            if tag not in tags:
-                tags.append(tag)
-    TAG_CHOICES += [(x,x) for x in tags]
+    tag = forms.ChoiceField(choices=[], required=False) 
+    year = forms.ChoiceField(choices=[], required=False)
+    month = forms.ChoiceField(choices=[], required=False)
+    
+    def __init__(self, *args, **kwargs):
+        super(ArticleFilter, self).__init__(*args, **kwargs)
+        tags = []
+        TAG_CHOICES = [(None,'----')]
+        YEAR_CHOICES = [(None,'----')]
 
-    years = Article.objects.dates('created','year')
-    YEAR_CHOICES += [(x.year,x.year) for x in years]
+        MONTH_CHOICES = [
+            (None,'----'),
+            (1, 'January'),
+            (2, 'February'),
+            (3, 'March'),
+            (4, 'April'),
+            (5, 'May'),
+            (6, 'June'),
+            (7, 'July'),
+            (8, 'August'),
+            (9, 'September'),
+            (10, 'Octomber'),
+            (11, 'November'),
+            (12, 'December')
+        ]
+        articles = Article.objects.all()
+        for article in articles:
+            for tag in article.tags.all():
+                if tag not in tags:
+                    tags.append(tag)
+        TAG_CHOICES += [(x,x) for x in tags]
 
-    tag = forms.ChoiceField(choices=TAG_CHOICES, required=False) 
-    year = forms.ChoiceField(choices=YEAR_CHOICES, required=False)
-    month = forms.ChoiceField(choices=MONTH_CHOICES, required=False)
+        years = Article.objects.dates('created','year')
+        YEAR_CHOICES += [(x.year,x.year) for x in years]
+
+        self.fields['tag'].choices = TAG_CHOICES
+        self.fields['year'].choices = YEAR_CHOICES
+        self.fields['month'].choices = MONTH_CHOICES
 
     def get_articles(self,tags=None):
         query = {}

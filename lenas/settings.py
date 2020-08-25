@@ -130,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
 # CK EDITOR SETTINGS
