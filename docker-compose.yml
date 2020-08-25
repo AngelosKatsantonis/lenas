@@ -3,7 +3,7 @@ version: '2'
 services:
   web:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:80"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate --run-syncdb && python manage.py runserver 0.0.0.0:80"
     container_name: lenas
     volumes:
       - .:/lenas
